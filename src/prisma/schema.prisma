@@ -12,8 +12,7 @@ model Course {
     ingredients  String?
     cuisine      Cuisine?    @relation(fields: [cuisineId], references: [id])
     cuisineId    String?
-    energy       Energy?     @relation(fields: [energyId], references: [id])
-    energyId     String?     @unique
+    energy       Energy?
     restaurant   Restaurant? @relation(fields: [restaurantId], references: [id])
     restaurantId String?
 }
@@ -25,17 +24,18 @@ model Cuisine {
 }
 
 model Energy {
-    id           String  @id @default(uuid())
+    id           String @id @default(uuid())
     valuePer100g Int
     prots        Int
     carbs        Int
     fats         Int
-    course       Course?
+    course       Course @relation(fields: [courseId], references: [id])
+    courseId     String
 }
 
 model Restaurant {
     id      String   @id @default(uuid())
-    name    String   @unique @default("unassigned") // most probably as later features Restaurant - Course relation will be added along with authorisation & authentication of a particular Restaurant
+    name    String
     courses Course[]
 }
 
