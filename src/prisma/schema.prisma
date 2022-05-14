@@ -4,17 +4,17 @@ datasource db {
 }
 
 model Course {
-    id           String     @id @default(uuid())
-    date         DateTime   @default(now())
-    name         String     @unique
+    id           String      @id @default(uuid())
+    date         DateTime    @default(now())
+    name         String      @unique
     desc         String
     ingredients  String?
-    cuisine      Cuisine    @relation(fields: [cuisineId], references: [id])
-    cuisineId    String
-    energy       Energy     @relation(fields: [energyId], references: [id])
-    energyId     String     @unique
-    restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
-    restaurantId String
+    cuisine      Cuisine?    @relation(fields: [cuisineId], references: [id])
+    cuisineId    String?
+    energy       Energy?     @relation(fields: [energyId], references: [id])
+    energyId     String?     @unique
+    restaurant   Restaurant? @relation(fields: [restaurantId], references: [id])
+    restaurantId String?
 }
 
 model Cuisine {
@@ -36,4 +36,8 @@ model Restaurant {
     id      String   @id @default(uuid())
     name    String   @unique @default("unassigned") // most probably as later features Restaurant - Course relation will be added along with authorisation & authentication of a particular Restaurant
     courses Course[]
+}
+
+generator client {
+    provider = "prisma-client-js"
 }
