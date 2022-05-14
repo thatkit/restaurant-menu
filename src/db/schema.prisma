@@ -4,5 +4,36 @@ datasource db {
 }
 
 model Course {
-    id String @id @default(uuid())
+    id           String     @id @default(uuid())
+    date         DateTime   @default(now())
+    name         String     @unique
+    desc         String
+    ingredients  String?
+    cuisine      Cuisine    @relation(fields: [cuisineId], references: [id])
+    cuisineId    String
+    energy       Energy     @relation(fields: [energyId], references: [id])
+    energyId     String     @unique
+    restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
+    restaurantId String
+}
+
+model Cuisine {
+    id      String   @id @default(uuid())
+    name    String   @unique
+    courses Course[]
+}
+
+model Energy {
+    id           String  @id @default(uuid())
+    valuePer100g Int
+    prots        Int
+    carbs        Int
+    fats         Int
+    course       Course?
+}
+
+model Restaurant {
+    id      String   @id @default(uuid())
+    name    String   @unique @default("unassigned") // most probably as later features Restaurant - Course relation will be added along with authorisation & authentication of a particular Restaurant
+    courses Course[]
 }
