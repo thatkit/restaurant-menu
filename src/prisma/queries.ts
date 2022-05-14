@@ -2,9 +2,9 @@ import { PrismaClient, Prisma } from "@prisma/client";
 const prisma = new PrismaClient();
 
 export const CREATE_NEW_COURSE = async (data: Prisma.CourseCreateInput) => {
-	const response = await prisma.course.create({ data });
+	return await prisma.course.create({ data });
+};
 
-    console.log('response:', response);
-
-    return response;
+export const CREATE_NEW_CUISINE = async (data: Prisma.CuisineCreateInput) => {
+	return await prisma.cuisine.create({ data });
 };
