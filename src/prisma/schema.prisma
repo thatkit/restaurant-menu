@@ -24,17 +24,17 @@ model Cuisine {
 }
 
 model Energy {
-    id           String @id @default(uuid())
+    id           String @id @unique @default(uuid())
     valuePer100g Int
     prots        Int
     carbs        Int
     fats         Int
     course       Course @relation(fields: [courseId], references: [id])
-    courseId     String
+    courseId     String @unique
 }
 
 model Restaurant {
-    id      String   @id @default(uuid())
+    id      String   @id @unique @default(uuid())
     name    String
     courses Course[]
 }
