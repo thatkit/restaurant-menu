@@ -1,16 +1,14 @@
 <template>
-	<input
-		type="text"
-		:name="name"
-		class="form-control"
-		:id="name"
-		:placeholder="name"
-	/>
+	<div class="form-floating">
+		<slot></slot>
+		<label :for="name">{{ fullName }}</label>
+	</div>
 </template>
 
 <script setup lang="ts">
 defineProps<{
 	name: string;
+	fullName: string;
 }>();
 </script>
 
