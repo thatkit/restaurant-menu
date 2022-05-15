@@ -7,10 +7,7 @@ export const useStore = defineStore("api", {
 	state: () => {
 		return {
 			number: 0,
-			cuisines: [
-				{ id: 1, name: "One" },
-				{ id: 2, name: "Two" },
-			],
+			cuisines: [],
 		};
 	},
 	getters: {
