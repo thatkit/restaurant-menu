@@ -9,7 +9,7 @@
 		<WrapWithLabel name="price" fullName="Price">
 			<InputComponent name="price" />
 		</WrapWithLabel>
-		<SelectComponent fullName="Select cuisine" :options="options" />
+		<SelectComponent fullName="Select cuisine" :options="store.getCuisines" />
 		<WrapWithLabel name="ingred" fullName="Ingredients">
 			<TextArea name="ingred" />
 		</WrapWithLabel>
@@ -19,14 +19,17 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { onMounted } from "vue";
+import { useStore } from "@/stores/api";
 import WrapWithLabel from "./WrapWithLabel.vue";
 import InputComponent from "./InputComponent.vue";
 import TextArea from "./TextArea.vue";
 import SelectComponent from "./SelectComponent.vue";
 import EnergyInfo from "./EnergyInfo.vue";
-const options = ref([{ id: 1, name: 'One'}, { id: 2, name: 'Two'}]);
+const store = useStore();
+onMounted(() => {
+	store.addCuisines();
+});
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

@@ -7,8 +7,11 @@
     "preview": "vite preview --port 5050",
     "typecheck": "vue-tsc --noEmit"
   },
+  "proxy": "http://localhost:5000",
   "dependencies": {
+    "axios": "^0.27.2",
     "bootstrap": "^5.2.0-beta1",
+    "pinia": "^2.0.14",
     "vue": "^3.2.33"
   },
   "devDependencies": {
