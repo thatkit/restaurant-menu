@@ -1,5 +1,10 @@
 import express from "express";
-import { createCuisine } from "./controllers";
+import { createCuisine, findAllCuisines } from "./controllers";
 const router = express.Router();
 
-export default router.post("/", express.json(), createCuisine);
+router.use(express.json());
+
+router.post("/", createCuisine);
+router.get("/", findAllCuisines);
+
+export default router;

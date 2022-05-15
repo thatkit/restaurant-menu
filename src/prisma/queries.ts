@@ -16,3 +16,7 @@ export const CREATE_NEW_COURSE = async (data: any) => {
 export const CREATE_NEW_CUISINE = async (data: Prisma.CuisineCreateInput) => {
 	return await prisma.cuisine.create({ data });
 };
+
+export const FIND_ALL_CUISINES = async () => {
+	return await prisma.cuisine.findMany();
+};
