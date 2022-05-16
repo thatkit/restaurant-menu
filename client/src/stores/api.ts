@@ -1,4 +1,8 @@
-import { ADD_NEW_CUISINE, FIND_ALL_CUISINES } from "@/api/apiClient";
+import {
+	ADD_NEW_CUISINE,
+	CREATE_NEW_COURSE,
+	FIND_ALL_CUISINES,
+} from "@/api/apiClient";
 import { defineStore } from "pinia";
 
 export const useStore = defineStore("api", {
@@ -6,6 +10,19 @@ export const useStore = defineStore("api", {
 		return {
 			cuisines: [],
 			newCuisine: "",
+			newCourse: {
+				name: "",
+				desc: "",
+				price: 0,
+				selectedCuisineId: "",
+				ingred: "",
+				energy: {
+					kcal: 0,
+					prots: 0,
+					carbs: 0,
+					fats: 0,
+				},
+			},
 		};
 	},
 	getters: {
@@ -33,5 +50,12 @@ export const useStore = defineStore("api", {
 			}
 		},
 		// COURSES (MENU) slice
+		async createNewCourse() {
+			try {
+				const response = await CREATE_NEW_COURSE(this.newCourse);
+			} catch (err) {
+				console.log(err);
+			}
+		},
 	},
 });
