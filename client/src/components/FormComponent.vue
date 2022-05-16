@@ -9,7 +9,7 @@
 		<WrapWithLabel name="price" fullName="Price">
 			<InputComponent name="price" />
 		</WrapWithLabel>
-		<SelectComponent fullName="Select cuisine" :options="store.getCuisines">
+		<SelectComponent fullName="Select cuisine" :options="cuisines">
 			<AddNewCuisine />
 		</SelectComponent>
 		<WrapWithLabel name="ingred" fullName="Ingredients">
@@ -29,12 +29,15 @@ import TextArea from "./TextArea.vue";
 import SelectComponent from "./SelectComponent.vue";
 import EnergyInfo from "./EnergyInfo.vue";
 import AddNewCuisine from "./AddNewCuisine.vue";
+import { storeToRefs } from "pinia";
 
 const store = useStore();
 
 onMounted(() => {
 	store.setCuisines();
 });
+
+const { cuisines } = storeToRefs(store);
 </script>
 
 <style scoped></style>

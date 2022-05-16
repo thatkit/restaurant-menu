@@ -26,12 +26,12 @@ export const useStore = defineStore("api", {
 		},
 		async addNewCuisine() {
 			try {
-				await ADD_NEW_CUISINE(this.newCuisine);
+				const response = await ADD_NEW_CUISINE(this.newCuisine);
+				this.cuisines.push(response); // #
 			} catch (err) {
 				console.log(err);
 			}
 		},
 		// COURSES (MENU) slice
-
 	},
 });
