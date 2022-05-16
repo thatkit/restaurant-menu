@@ -10,19 +10,6 @@ export const useStore = defineStore("api", {
 		return {
 			cuisines: [],
 			newCuisine: "",
-			newCourse: {
-				name: "",
-				desc: "",
-				price: 0,
-				selectedCuisineId: "",
-				ingred: "",
-				energy: {
-					kcal: 0,
-					prots: 0,
-					carbs: 0,
-					fats: 0,
-				},
-			},
 		};
 	},
 	getters: {

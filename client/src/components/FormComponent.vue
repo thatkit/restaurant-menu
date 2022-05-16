@@ -1,19 +1,42 @@
 <template>
 	<form>
 		<WrapWithLabel name="name" fullName="Course name">
-			<InputComponent name="name" />
+			<InputComponent
+				name="name"
+				@input="
+					(e) => newCourseStore.setCourseProp('name', e.target?.value)
+				"
+			/>
 		</WrapWithLabel>
 		<WrapWithLabel name="desc" fullName="Description">
-			<TextArea name="desc"></TextArea>
+			<TextArea
+				name="desc"
+				@input="
+					(e) => newCourseStore.setCourseProp('desc', e.target?.value)
+				"
+			></TextArea>
 		</WrapWithLabel>
 		<WrapWithLabel name="price" fullName="Price">
-			<InputComponent name="price" />
+			<InputComponent
+				name="price"
+				@input="
+					(e) => newCourseStore.setCourseProp('price', e.target?.value)
+				"
+			/>
 		</WrapWithLabel>
-		<SelectComponent fullName="Select cuisine" :options="cuisines">
+		<SelectComponent
+			fullName="Select cuisine"
+			:options="cuisines"
+		>
 			<AddNewCuisine />
 		</SelectComponent>
 		<WrapWithLabel name="ingred" fullName="Ingredients">
-			<TextArea name="ingred"></TextArea>
+			<TextArea
+				name="ingred"
+				@input="
+					(e) => newCourseStore.setCourseProp('ingred', e.target?.value)
+				"
+			></TextArea>
 		</WrapWithLabel>
 		<EnergyInfo />
 		<button type="submit" class="btn btn-primary">Save new course</button>

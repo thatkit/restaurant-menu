@@ -1,48 +1,32 @@
+import type { CoursePropType, EnergyPropType } from "@/types";
 import { defineStore } from "pinia";
 
-export const useNewCourseStore = defineStore("api", {
+export const useNewCourseStore = defineStore("newCourse", {
 	state: () => {
 		return {
 			name: "",
 			desc: "",
-			price: 0,
+			price: "",
 			selectedCuisineId: "",
 			ingred: "",
 			energy: {
-				kcal: 0,
-				prots: 0,
-				carbs: 0,
-				fats: 0,
+				kcal: "",
+				prots: "",
+				carbs: "",
+				fats: "",
 			},
 		};
 	},
 	actions: {
-		setName(name: string) {
-			this.name = name;
+		setCourseProp(key: CoursePropType, value: string) {
+			this[key] = value;
+			console.log(this);
 		},
-		setDesc(desc: string) {
-			this.desc = desc;
-		},
-		setPrice(price: number) {
-			this.price = price;
-		},
-		setSelectedCuisineId(selectedCuisineId: string) {
-			this.selectedCuisineId = selectedCuisineId;
-		},
-		setIngred(ingred: string) {
-			this.ingred = ingred;
-		},
-		setKcal(kcal: number) {
-			this.energy = { ...this.energy, kcal };
-		},
-		setProts(prots: number) {
-			this.energy = { ...this.energy, prots };
-		},
-		setCarbs(carbs: number) {
-			this.energy = { ...this.energy, carbs };
-		},
-		setFats(fats: number) {
-			this.energy = { ...this.energy, fats };
+		setEnergyProp(key: EnergyPropType, value: string) {
+			this.energy = {
+				...this.energy,
+				[key]: value
+			};
 		},
 	},
 });

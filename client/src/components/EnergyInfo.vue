@@ -6,16 +6,26 @@
 			:name="value"
 			:fullName="value.charAt(0).toUpperCase() + value.slice(1)"
 		>
-			<InputComponent :name="value" />
+			<InputComponent
+				:name="value"
+				@input="
+					(e) => newCourseStore.setEnergyProp(value, e.target?.value)
+				"
+			/>
 		</WrapWithLabel>
 	</div>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, type Ref } from "vue";
 import WrapWithLabel from "./WrapWithLabel.vue";
 import InputComponent from "./InputComponent.vue";
-const values = ref(["kcal", "prots", "carbs", "fats"]);
+import { useNewCourseStore } from "@/stores/newCourse";
+import type { EnergyPropType } from "@/types";
+
+const values: Ref<EnergyPropType[]> = ref(["kcal", "prots", "carbs", "fats"]);
+
+const newCourseStore = useNewCourseStore();
 </script>
 
 <style scoped>

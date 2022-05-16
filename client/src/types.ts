@@ -21,3 +21,9 @@ export type CoursePropType =
 	| "selectedCuisineId"
 	| "ingred"
 	| "energy";
+
+export type EnergyPropType =
+	| "kcal"
+	| "prots"
+	| "carbs"
+	| "fats";
