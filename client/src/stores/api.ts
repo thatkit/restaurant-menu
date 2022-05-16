@@ -1,9 +1,10 @@
+import { defineStore } from "pinia";
 import {
 	ADD_NEW_CUISINE,
 	CREATE_NEW_COURSE,
 	FIND_ALL_CUISINES,
 } from "@/api/apiClient";
-import { defineStore } from "pinia";
+import { useNewCourseStore } from "./newCourse";
 
 export const useStore = defineStore("api", {
 	state: () => {
@@ -39,7 +40,10 @@ export const useStore = defineStore("api", {
 		// COURSES (MENU) slice
 		async createNewCourse() {
 			try {
-				const response = await CREATE_NEW_COURSE(this.newCourse);
+				const newCourseStore = useNewCourseStore();
+				const response = await CREATE_NEW_COURSE(
+					newCourseStore.getNewCourse
+				);
 			} catch (err) {
 				console.log(err);
 			}

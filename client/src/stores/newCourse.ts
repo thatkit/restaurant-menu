@@ -1,5 +1,5 @@
-import type { CoursePropType, EnergyPropType } from "@/types";
 import { defineStore } from "pinia";
+import type { CoursePropType, EnergyPropType } from "@/types";
 
 export const useNewCourseStore = defineStore("newCourse", {
 	state: () => {
@@ -17,15 +17,17 @@ export const useNewCourseStore = defineStore("newCourse", {
 			},
 		};
 	},
+	getters: {
+		getNewCourse: (state) => state,
+	},
 	actions: {
 		setCourseProp(key: CoursePropType, value: string) {
 			this[key] = value;
-			console.log(this);
 		},
 		setEnergyProp(key: EnergyPropType, value: string) {
 			this.energy = {
 				...this.energy,
-				[key]: value
+				[key]: value,
 			};
 		},
 	},

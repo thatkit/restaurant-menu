@@ -20,26 +20,27 @@
 			<InputComponent
 				name="price"
 				@input="
-					(e) => newCourseStore.setCourseProp('price', e.target?.value)
+					(e) =>
+						newCourseStore.setCourseProp('price', e.target?.value)
 				"
 			/>
 		</WrapWithLabel>
-		<SelectComponent
-			fullName="Select cuisine"
-			:options="cuisines"
-		>
+		<SelectComponent fullName="Select cuisine" :options="cuisines">
 			<AddNewCuisine />
 		</SelectComponent>
 		<WrapWithLabel name="ingred" fullName="Ingredients">
 			<TextArea
 				name="ingred"
 				@input="
-					(e) => newCourseStore.setCourseProp('ingred', e.target?.value)
+					(e) =>
+						newCourseStore.setCourseProp('ingred', e.target?.value)
 				"
 			></TextArea>
 		</WrapWithLabel>
 		<EnergyInfo />
-		<button type="submit" class="btn btn-primary">Save new course</button>
+		<button type="submit" class="btn btn-primary" @click="onSumbit">
+			Save new course
+		</button>
 	</form>
 </template>
 
@@ -63,6 +64,11 @@ onMounted(() => {
 });
 
 const { cuisines } = storeToRefs(store);
+
+const onSumbit = (e: Event) => {
+	e.preventDefault();
+	store.createNewCourse();
+};
 </script>
 
 <style scoped></style>

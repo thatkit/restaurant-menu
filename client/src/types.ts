@@ -1,17 +1,17 @@
 export class NewCourse {
 	name!: string;
 	desc!: string;
-	price!: number;
+	price!: string;
 	selectedCuisineId!: string;
 	ingred?: string;
 	energy?: Energy;
 }
 
 export class Energy {
-	kcal!: number;
-	prots!: number;
-	carbs!: number;
-	fats!: number;
+	kcal!: string;
+	prots!: string;
+	carbs!: string;
+	fats!: string;
 }
 
 export type CoursePropType =
