@@ -5,6 +5,7 @@
 			{{ option.name }}
 		</option>
 	</select>
+	<slot></slot>
 </template>
 
 <script setup lang="ts">
@@ -12,6 +13,7 @@ class Option {
 	id!: number;
 	name!: string;
 }
+
 defineProps<{
 	fullName: string;
 	options: Option[];
