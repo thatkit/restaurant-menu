@@ -12,6 +12,7 @@ export const useStore = defineStore("api", {
 		getCuisines: (state) => state.cuisines,
 	},
 	actions: {
+		// CUISINES slice
 		async setNewCuisine(name: string) {
 			this.newCuisine = name;
 		},
@@ -30,5 +31,7 @@ export const useStore = defineStore("api", {
 				console.log(err);
 			}
 		},
+		// COURSES (MENU) slice
+
 	},
 });
