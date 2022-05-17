@@ -1,1 +1,0 @@
-{"version":3,"file":"fakeAuth.js","sourceRoot":"","sources":["../../../src/middleware/fakeAuth.ts"],"names":[],"mappings":";;;AAEO,IAAM,QAAQ,GAAG,UAAC,GAAY,EAAE,GAAa,EAAE,IAAkB;IACvE,GAAG,CAAC,IAAI,CAAC,YAAY,GAAG,sCAAsC,CAAC;IAC/D,IAAI,EAAE,CAAC;AACR,CAAC,CAAC;AAHW,QAAA,QAAQ,YAGnB"}

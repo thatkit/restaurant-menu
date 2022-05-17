@@ -6,12 +6,16 @@ import path from "path";
 
 const app = express();
 
+app.use("/api/courses", coursesRoute);
+app.use("/api/cuisines", cuisineRoute);
+
 // Serve static assets in PRODUCTION
 if (process.env.NODE_ENV === "production") {
+	console.log("Serving static files...");
 	// Set static folder
-	app.use(express.static("client/dist"));
-	app.get("*", (req, res) => {
-		res.sendFile(path.resolve(__dirname, "../client/dist/index.html"));
+	app.use(express.static("src/public"));
+	app.get("/", (req, res) => {
+		res.sendFile(path.resolve(__dirname, "./public/index.html"));
 	});
 }
 
@@ -24,9 +28,6 @@ if (process.env.NODE_ENV === "development") {
 		next();
 	});
 }
-
-app.use("/api/courses", coursesRoute);
-app.use("/api/cuisines", cuisineRoute);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}...`));

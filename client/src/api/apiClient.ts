@@ -2,7 +2,7 @@ import { fromJsObjToFormDataMapper } from "@/tools/fromJsObjToFormDataMapper";
 import type { NewCourse } from "@/types";
 import axios from "axios";
 
-const baseUrl = "http://localhost:5050/api";
+const baseUrl = "http://localhost:5000/api";
 
 export const FIND_ALL_CUISINES = async () => {
 	try {
