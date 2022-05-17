@@ -2,6 +2,7 @@
 	<div class="cnt">
 		<select
 			class="form-select"
+			:required="isRequired"
 			@change="
 				(e) =>
 					newCourseStore.setCourseProp('cuisineId', e.target?.value)
@@ -32,6 +33,7 @@ class Option {
 defineProps<{
 	fullName: string;
 	options: Option[];
+	isRequired: boolean;
 }>();
 
 const newCourseStore = useNewCourseStore();

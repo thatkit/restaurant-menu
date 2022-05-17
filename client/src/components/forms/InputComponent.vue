@@ -6,12 +6,14 @@
 		:id="name"
 		:placeholder="name"
 		value=""
+		:required="isRequired"
 	/>
 </template>
 
 <script setup lang="ts">
 defineProps<{
 	name: string;
+	isRequired: boolean;
 }>();
 </script>
 
