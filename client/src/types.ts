@@ -18,8 +18,8 @@ export type CoursePropType =
 	| "name"
 	| "desc"
 	| "price"
-	| "selectedCuisineId"
-	| "ingred"
+	| "cuisineId"
+	| "ingredients"
 	| "energy";
 
 export type EnergyPropType =

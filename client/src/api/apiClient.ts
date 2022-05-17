@@ -1,3 +1,4 @@
+import { fromJsObjToFormDataMapper } from "@/tools/fromJsObjToFormDataMapper";
 import type { NewCourse } from "@/types";
 import axios from "axios";
 
@@ -26,8 +27,8 @@ export const ADD_NEW_CUISINE = async (name: string) => {
 export const CREATE_NEW_COURSE = async (newCourse: NewCourse) => {
 	try {
 		const response = await axios.post(
-			"http://localhost:5000/api/cuisines",
-			newCourse
+			"http://localhost:5000/api/courses",
+			fromJsObjToFormDataMapper(newCourse)
 		);
 		console.log(response);
 		return response.data;

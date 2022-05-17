@@ -9,7 +9,7 @@ export const stringToInt = (
 	let energy = req.body.energy;
 	if (energy) {
 		energy = {
-			valuePer100g: +energy.valuePer100g,
+			kcal: +energy.kcal,
 			prots: +energy.prots,
 			carbs: +energy.carbs,
 			fats: +energy.fats,

@@ -4,7 +4,7 @@
 		@change="
 			(e) =>
 				newCourseStore.setCourseProp(
-					'selectedCuisineId',
+					'cuisineId',
 					e.target?.value
 				)
 		"

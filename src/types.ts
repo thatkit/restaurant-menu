@@ -7,7 +7,7 @@ export class CreateCourseDto {
 }
 
 export class Energy {
-    valuePer100g!: number;
+    kcal!: number;
     prots!: number;
     carbs!: number;
     fats!: number;

@@ -41,9 +41,7 @@ export const useStore = defineStore("api", {
 		async createNewCourse() {
 			try {
 				const newCourseStore = useNewCourseStore();
-				const response = await CREATE_NEW_COURSE(
-					newCourseStore.getNewCourse
-				);
+				const response = await CREATE_NEW_COURSE(newCourseStore.$state);
 			} catch (err) {
 				console.log(err);
 			}

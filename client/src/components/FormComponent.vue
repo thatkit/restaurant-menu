@@ -33,7 +33,7 @@
 				name="ingred"
 				@input="
 					(e) =>
-						newCourseStore.setCourseProp('ingred', e.target?.value)
+						newCourseStore.setCourseProp('ingredients', e.target?.value)
 				"
 			></TextArea>
 		</WrapWithLabel>
