@@ -8,7 +8,7 @@
 					newCourseStore.setCourseProp('cuisineId', e.target?.value)
 			"
 		>
-			<option selected>{{ fullName }}</option>
+			<option selected value="">{{ fullName }}</option>
 			<option
 				v-for="option in options"
 				:key="option.id"
