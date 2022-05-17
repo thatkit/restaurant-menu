@@ -55,11 +55,7 @@
 			></TextArea>
 		</WrapWithLabel>
 		<EnergyInfo class="formItem" />
-		<button
-			type="submit"
-			class="btn btn-primary p-3"
-			:disabled="!isValid"
-		>
+		<button type="submit" class="btn btn-primary p-3" :disabled="!isValid">
 			Save new course
 		</button>
 	</form>
@@ -93,7 +89,10 @@ const { isValid } = storeToRefs(formValidationStore);
 const onChange = () => {
 	formValidationStore.setIsValid(validateForm()[0]);
 };
-const onSumbit = (e: Event) => apiStore.createNewCourse();
+const onSumbit = (e: Event) => {
+	e.preventDefault();
+	apiStore.createNewCourse();
+};
 </script>
 
 <style scoped>

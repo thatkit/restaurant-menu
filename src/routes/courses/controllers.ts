@@ -1,9 +1,13 @@
 import { Request, Response } from "express";
 import { CREATE_NEW_COURSE } from "../../prisma/queries";
+import { serverError } from "../../tools/errorHandler";
 
 export const createCourse = async (req: Request, res: Response) => {
-	console.log("request co:", req.body);
 	const response = await CREATE_NEW_COURSE(req.body);
-	console.log("response co:", response);
+
+	if (response === serverError) {
+		return res.status(500).json(response);
+	}
+
 	return res.status(201).json(response);
 };

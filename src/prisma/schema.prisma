@@ -6,7 +6,7 @@ datasource db {
 model Course {
     id           String      @id @default(uuid())
     date         DateTime    @default(now())
-    name         String      @unique
+    name         String
     price        Int
     desc         String
     ingredients  String?
