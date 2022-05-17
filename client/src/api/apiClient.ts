@@ -2,9 +2,11 @@ import { fromJsObjToFormDataMapper } from "@/tools/fromJsObjToFormDataMapper";
 import type { NewCourse } from "@/types";
 import axios from "axios";
 
+const baseUrl = "http://localhost:5050/api";
+
 export const FIND_ALL_CUISINES = async () => {
 	try {
-		const response = await axios.get("http://localhost:5000/api/cuisines");
+		const response = await axios.get(`${baseUrl}/cuisines`);
 		return response.data;
 	} catch (err) {
 		console.log(err); // # handle errors gracefully
@@ -13,10 +15,7 @@ export const FIND_ALL_CUISINES = async () => {
 
 export const ADD_NEW_CUISINE = async (name: string) => {
 	try {
-		const response = await axios.post(
-			"http://localhost:5000/api/cuisines",
-			{ name }
-		);
+		const response = await axios.post(`${baseUrl}/cuisines`, { name });
 		console.log(response);
 		return response.data;
 	} catch (err) {
@@ -27,7 +26,7 @@ export const ADD_NEW_CUISINE = async (name: string) => {
 export const CREATE_NEW_COURSE = async (newCourse: NewCourse) => {
 	try {
 		const response = await axios.post(
-			"http://localhost:5000/api/courses",
+			`${baseUrl}/courses`,
 			fromJsObjToFormDataMapper(newCourse)
 		);
 		console.log(response);

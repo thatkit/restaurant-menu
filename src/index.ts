@@ -7,24 +7,23 @@ import path from "path";
 const app = express();
 
 // Serve static assets in PRODUCTION
-if (process.env.NODE_ENV === 'production') {
-    // Set static folder
-    app.use(express.static('client/build'));
-    app.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-    });
-}
-
-// Allow dev server to connect in DEVELOPMENT
-if (process.env.NODE_ENV === 'development') {
-	// remove cors
-	app.use("/", (req, res, next) => {
-		res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
-		res.setHeader('Access-Control-Allow-Headers', 'content-type');
-		next();
+if (process.env.NODE_ENV === "production") {
+	// Set static folder
+	app.use(express.static("client/dist"));
+	app.get("*", (req, res) => {
+		res.sendFile(path.resolve(__dirname, "../client/dist/index.html"));
 	});
 }
 
+// Allow dev server to connect in DEVELOPMENT
+if (process.env.NODE_ENV === "development") {
+	// remove cors
+	app.use("/", (req, res, next) => {
+		res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+		res.setHeader("Access-Control-Allow-Headers", "content-type");
+		next();
+	});
+}
 
 app.use("/api/courses", coursesRoute);
 app.use("/api/cuisines", cuisineRoute);
