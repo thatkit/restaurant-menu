@@ -15,8 +15,8 @@
 
 <script setup lang="ts">
 import { useStore } from "@/stores/api";
-import WrapWithLabel from "./WrapWithLabel.vue";
-import InputComponent from "./InputComponent.vue";
+import WrapWithLabel from "@/components/forms/WrapWithLabel.vue";
+import InputComponent from "@/components/forms/InputComponent.vue";
 import { ref } from "vue";
 
 const store = useStore();
