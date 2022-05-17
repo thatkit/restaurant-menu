@@ -8,6 +8,7 @@
 		<WrapWithLabel name="name" fullName="Course name" class="formItem">
 			<InputComponent
 				name="name"
+				type="text"
 				:isRequired="true"
 				@input="
 					(e) => newCourseStore.setCourseProp('name', e.target?.value)
@@ -26,6 +27,7 @@
 		<WrapWithLabel name="price" fullName="Price" class="formItem">
 			<InputComponent
 				name="price"
+				type="number"
 				:isRequired="true"
 				@input="
 					(e) =>

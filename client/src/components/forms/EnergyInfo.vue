@@ -8,6 +8,8 @@
 		>
 			<InputComponent
 				:name="value"
+				type="number"
+				:isRequired="false"
 				@input="
 					(e) => newCourseStore.setEnergyProp(value, e.target?.value)
 				"

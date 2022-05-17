@@ -1,6 +1,6 @@
 <template>
 	<input
-		type="text"
+		:type="type"
 		:name="name"
 		class="form-control"
 		:id="name"
@@ -14,6 +14,7 @@
 defineProps<{
 	name: string;
 	isRequired: boolean;
+	type: "text" | "number";
 }>();
 </script>
 
