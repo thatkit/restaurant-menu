@@ -7,4 +7,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Layout from "@/components/layouts/Layout.vue";
 </script>
 
-<style scoped></style>
+<style>
+@import url("./styles.css");
+</style>

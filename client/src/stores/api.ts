@@ -4,13 +4,13 @@ import {
 	CREATE_NEW_COURSE,
 	FIND_ALL_CUISINES,
 } from "@/api/apiClient";
-import { useNewCourseStore } from "./newCourse";
+import { useNewCourseStore } from "./forms/newCourse";
+import { useNewCuisineStore } from "./forms/newCuisine";
 
-export const useStore = defineStore("api", {
+export const useApiStore = defineStore("api", {
 	state: () => {
 		return {
 			cuisines: [],
-			newCuisine: "",
 		};
 	},
 	getters: {
@@ -18,9 +18,6 @@ export const useStore = defineStore("api", {
 	},
 	actions: {
 		// CUISINES slice
-		async setNewCuisine(name: string) {
-			this.newCuisine = name;
-		},
 		async setCuisines() {
 			try {
 				const response = await FIND_ALL_CUISINES();
@@ -31,7 +28,10 @@ export const useStore = defineStore("api", {
 		},
 		async addNewCuisine() {
 			try {
-				const response = await ADD_NEW_CUISINE(this.newCuisine);
+				const newCuisineStore = useNewCuisineStore();
+				const response = await ADD_NEW_CUISINE(
+					newCuisineStore.$state.newCuisine
+				);
 				this.cuisines.push(response); // #
 			} catch (err) {
 				console.log(err);

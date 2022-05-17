@@ -1,6 +1,6 @@
 <template>
-	<form>
-		<WrapWithLabel name="name" fullName="Course name">
+	<form class="form">
+		<WrapWithLabel name="name" fullName="Course name" class="formItem">
 			<InputComponent
 				name="name"
 				@input="
@@ -8,7 +8,11 @@
 				"
 			/>
 		</WrapWithLabel>
-		<WrapWithLabel name="desc" fullName="Description">
+		<WrapWithLabel
+			name="desc"
+			fullName="Description"
+			class="formItem"
+		>
 			<TextArea
 				name="desc"
 				@input="
@@ -16,7 +20,7 @@
 				"
 			></TextArea>
 		</WrapWithLabel>
-		<WrapWithLabel name="price" fullName="Price">
+		<WrapWithLabel name="price" fullName="Price" class="formItem">
 			<InputComponent
 				name="price"
 				@input="
@@ -25,20 +29,31 @@
 				"
 			/>
 		</WrapWithLabel>
-		<SelectComponent fullName="Select cuisine" :options="cuisines">
+		<SelectComponent
+			fullName="Select cuisine"
+			:options="cuisines"
+			class="formItem"
+		>
 			<AddNewCuisine />
 		</SelectComponent>
-		<WrapWithLabel name="ingred" fullName="Ingredients">
+		<WrapWithLabel
+			name="ingred"
+			fullName="Ingredients"
+			class="formItem"
+		>
 			<TextArea
 				name="ingred"
 				@input="
 					(e) =>
-						newCourseStore.setCourseProp('ingredients', e.target?.value)
+						newCourseStore.setCourseProp(
+							'ingredients',
+							e.target?.value
+						)
 				"
 			></TextArea>
 		</WrapWithLabel>
-		<EnergyInfo />
-		<button type="submit" class="btn btn-primary" @click="onSumbit">
+		<EnergyInfo class="formItem" />
+		<button type="submit" class="btn btn-primary p-3" @click="onSumbit">
 			Save new course
 		</button>
 	</form>
@@ -46,29 +61,35 @@
 
 <script setup lang="ts">
 import { onMounted } from "vue";
-import { useStore } from "@/stores/api";
-import { useNewCourseStore } from "@/stores/newCourse";
-import WrapWithLabel from "./WrapWithLabel.vue";
-import InputComponent from "./InputComponent.vue";
-import TextArea from "./TextArea.vue";
-import SelectComponent from "./SelectComponent.vue";
-import EnergyInfo from "./EnergyInfo.vue";
-import AddNewCuisine from "./AddNewCuisine.vue";
 import { storeToRefs } from "pinia";
+import { useApiStore } from "@/stores/api";
+import { useNewCourseStore } from "@/stores/forms/newCourse";
+import WrapWithLabel from "@/components/forms/WrapWithLabel.vue";
+import InputComponent from "@/components/forms/InputComponent.vue";
+import TextArea from "@/components/forms/TextArea.vue";
+import SelectComponent from "@/components/forms/SelectComponent.vue";
+import EnergyInfo from "@/components/forms/EnergyInfo.vue";
+import AddNewCuisine from "@/components/forms/AddNewCuisine.vue";
 
-const store = useStore();
+const apiStore = useApiStore();
 const newCourseStore = useNewCourseStore();
 
 onMounted(() => {
-	store.setCuisines();
+	apiStore.setCuisines();
 });
 
-const { cuisines } = storeToRefs(store);
+const { cuisines } = storeToRefs(apiStore);
 
 const onSumbit = (e: Event) => {
 	e.preventDefault();
-	store.createNewCourse();
+	apiStore.createNewCourse();
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.form {
+	display: flex;
+	flex-flow: column nowrap;
+	gap: 1rem;
+}
+</style>

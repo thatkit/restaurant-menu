@@ -17,7 +17,6 @@ import FormComponent from "@/components/forms/FormComponent.vue";
 <style scoped>
 .customCnt {
 	height: 100vh;
-	overflow: hidden;
 	display: flex;
 	flex-flow: column nowrap;
 	justify-content: flex-start;
