@@ -11,7 +11,7 @@
 				type="number"
 				:isRequired="false"
 				@input="
-					(e) => newCourseStore.setEnergyProp(value, e.target?.value)
+					(e) => newCourseStore.setEnergyProp(value as EnergyPropType, (e.target as HTMLInputElement).value)
 				"
 			/>
 		</WrapWithLabel>
@@ -25,7 +25,7 @@ import InputComponent from "./InputComponent.vue";
 import { useNewCourseStore } from "@/stores/forms/newCourse";
 import type { EnergyPropType } from "@/types";
 
-const values: Ref<EnergyPropType[]> = ref(["kcal", "prots", "carbs", "fats"]);
+const values = ref(["kcal", "prots", "carbs", "fats"]);
 
 const newCourseStore = useNewCourseStore();
 </script>

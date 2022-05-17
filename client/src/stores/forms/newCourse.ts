@@ -17,7 +17,9 @@ export const useNewCourseStore = defineStore("newCourse", {
 	}),
 	actions: {
 		setCourseProp(key: CoursePropType, value: string) {
-			this[key] = value;
+			this[
+				key as "name" | "desc" | "price" | "cuisineId" | "ingredients"
+			] = value;
 		},
 		setEnergyProp(key: EnergyPropType, value: string) {
 			this.energy = {

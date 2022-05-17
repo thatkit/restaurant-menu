@@ -5,7 +5,7 @@
 			:required="isRequired"
 			@change="
 				(e) =>
-					newCourseStore.setCourseProp('cuisineId', e.target?.value)
+					newCourseStore.setCourseProp('cuisineId', (e.target as HTMLInputElement).value)
 			"
 		>
 			<option selected value="">{{ fullName }}</option>

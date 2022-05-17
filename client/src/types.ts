@@ -2,7 +2,7 @@ export class NewCourse {
 	name!: string;
 	desc!: string;
 	price!: string;
-	selectedCuisineId!: string;
+	cuisineId!: string;
 	ingred?: string;
 	energy?: Energy;
 }

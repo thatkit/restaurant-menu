@@ -32,7 +32,7 @@ export const useApiStore = defineStore("api", {
 				const response = await ADD_NEW_CUISINE(
 					newCuisineStore.$state.newCuisine
 				);
-				this.cuisines.push(response); // #
+				this.cuisines.push(response as never); // #
 			} catch (err) {
 				console.log(err);
 			}

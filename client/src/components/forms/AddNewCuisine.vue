@@ -10,7 +10,9 @@
 		<WrapWithLabel name="newCuisine" fullName="New cuisine name">
 			<InputComponent
 				name="newCuisine"
-				@input="(e) => newCuisineStore.setNewCuisine(e.target?.value)"
+				:isRequired="false"
+				type="text"
+				@input="(e) => newCuisineStore.setNewCuisine((e.target as HTMLInputElement).value)"
 			/>
 		</WrapWithLabel>
 		<button

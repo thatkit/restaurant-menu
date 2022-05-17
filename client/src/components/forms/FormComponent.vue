@@ -11,7 +11,7 @@
 				type="text"
 				:isRequired="true"
 				@input="
-					(e) => newCourseStore.setCourseProp('name', e.target?.value)
+					(e) => newCourseStore.setCourseProp('name', (e.target as HTMLInputElement).value)
 				"
 			/>
 		</WrapWithLabel>
@@ -20,7 +20,7 @@
 				name="desc"
 				:isRequired="true"
 				@input="
-					(e) => newCourseStore.setCourseProp('desc', e.target?.value)
+					(e) => newCourseStore.setCourseProp('desc', (e.target as HTMLInputElement).value)
 				"
 			></TextArea>
 		</WrapWithLabel>
@@ -31,7 +31,7 @@
 				:isRequired="true"
 				@input="
 					(e) =>
-						newCourseStore.setCourseProp('price', e.target?.value)
+						newCourseStore.setCourseProp('price', (e.target as HTMLInputElement).value)
 				"
 			/>
 		</WrapWithLabel>
@@ -51,7 +51,7 @@
 					(e) =>
 						newCourseStore.setCourseProp(
 							'ingredients',
-							e.target?.value
+							(e.target as HTMLInputElement).value
 						)
 				"
 			></TextArea>
